@@ -11,10 +11,7 @@ class People(models.Model):
 
 
 class Client(People):
-    pass
-
-class Manager(People):
-    manager = models.BooleanField
+    admin = models.CharField(max_length=5)
 
 
 
@@ -25,3 +22,4 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     img = models.CharField(max_length=100)
     amount = models.IntegerField()
+    category = models.CharField(max_length=20)
