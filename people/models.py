@@ -20,6 +20,6 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    img = models.CharField(max_length=100)
+    img = models.CharField(max_length=300)
     amount = models.IntegerField()
     category = models.CharField(max_length=20)
