@@ -13,7 +13,6 @@ class EmailViewSet(viewsets.ModelViewSet):
         queryset = Client.objects.all()
         search_query = self.request.query_params.get('search', None)  # Obtener el parámetro de búsqueda
         if search_query:
-            # Filtrar por correo electrónico o ID del cliente
             queryset = queryset.filter(email=search_query)
         return queryset
 
@@ -35,7 +34,6 @@ class ProductViewSet(viewsets.ModelViewSet):
         search_query = self.request.query_params.get('search', None)  # Obtener el parámetro de búsqueda
 
         if search_query:
-            # Filtrar por name o ID del producto
             queryset = queryset.filter(name=search_query)
         
         return queryset
