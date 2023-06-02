@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework import routers
 # from .api import ClientViewSet, ProductViewSet, EmailViewSet
-from .views import ClientEmailDetailView, ClientViewSet, ProductViewSet, ProductIdView
+from .views import ClientEmailDetailView, ClientViewSet, ProductViewSet, ProductIdView, ClientEmailDeleteView
 
 # router = routers.DefaultRouter()
 
@@ -20,5 +20,6 @@ urlpatterns = [
     path(r'api/client/', ClientViewSet.as_view(), name='client'),
     path(r'api/product/', ProductViewSet.as_view(), name='product'),
     path(r'api/client/<str:email>/', ClientEmailDetailView.as_view(), name='email'),
-    path(r'api/product/<str:id>/', ProductIdView.as_view(), name='id')
+    path(r'api/product/<str:id>/', ProductIdView.as_view(), name='id'),
+    path(r'api/client/rm/<str:email>/', ClientEmailDeleteView.as_view(), name='email'),
 ]

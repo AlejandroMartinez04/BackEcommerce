@@ -32,3 +32,10 @@ class ProductIdView(generics.RetrieveUpdateAPIView):
     serializer_class = ProductSerializer
     permission_classes = [permissions.AllowAny]
     lookup_field = 'id'
+
+
+class ClientEmailDeleteView(generics.RetrieveDestroyAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    permission_classes = [permissions.AllowAny]
+    lookup_field = 'email'
