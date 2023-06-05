@@ -1,17 +1,20 @@
 from rest_framework import generics, permissions
 from .serializers import ClientSerializer, ProductSerializer
 from .models import Client, Product
-from django.contrib.auth.hashers import make_password
+import bcrypt
+
 
 class ClientViewSet(generics.ListCreateAPIView):
     queryset = Client.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = ClientSerializer
 
-    def create_user(request):
+    def create(self, request, *args, **kwargs):
         password = request.data.get('password')
-        hashed_password = make_password(password)
-        user = Client.objects.create(email=request.data.get('email'), password=hashed_password)
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        request.data['password'] = hashed_password.decode('utf-8')
+
+        return super().create(request, *args, **kwargs)
 
 class ClientEmailDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Client.objects.all()
@@ -19,7 +22,12 @@ class ClientEmailDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.AllowAny]
     lookup_field = 'email'
 
+    def partial_update(self, request, *args, **kwargs):
+        password = request.data.get('password')
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        request.data['password'] = hashed_password.decode('utf-8')
 
+        return super().partial_update(request, *args, **kwargs)
 
 class ProductViewSet(generics.ListCreateAPIView):
     queryset = Product.objects.all()

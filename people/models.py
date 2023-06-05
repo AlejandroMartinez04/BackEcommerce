@@ -4,7 +4,7 @@ class People(models.Model):
     fullname = models.CharField(max_length=70)
     contact = models.CharField(max_length=12)
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=20)
+    password = models.CharField(max_length=100)
 
     class Meta:
         abstract = True
