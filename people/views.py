@@ -1,4 +1,6 @@
 from rest_framework import generics, permissions
+from rest_framework import generics, status
+from rest_framework.response import Response
 from .serializers import ClientSerializer, ProductSerializer
 from .models import Client, Product
 
@@ -13,6 +15,20 @@ class ClientEmailDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ClientSerializer
     permission_classes = [permissions.AllowAny]
     lookup_field = 'email'
+
+
+class ClientLoginView(generics.GenericAPIView):
+    serializer_class = ClientSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        contraseña_ingresada = request.data.get('password')
+        usuario = Client.objects.get(email=request.data.get('email'))
+        if usuario.check_password(contraseña_ingresada):
+            return Response({'message': 'Right password'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'message': 'Wrong password'}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 class ProductViewSet(generics.ListCreateAPIView):
     queryset = Product.objects.all()
