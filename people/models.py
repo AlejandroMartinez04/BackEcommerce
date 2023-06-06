@@ -16,6 +16,8 @@ class People(models.Model):
         # Compara la contraseña encriptada con la contraseña ingresada
         return check_password(raw_password, self.password)
 
+    def __str__(self):
+        return self.fullname
     class Meta:
         abstract = True
 
@@ -33,3 +35,6 @@ class Product(models.Model):
     img = models.CharField(max_length=300)
     amount = models.IntegerField()
     category = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name

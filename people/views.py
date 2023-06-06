@@ -25,7 +25,8 @@ class ClientLoginView(generics.GenericAPIView):
         contraseña_ingresada = request.data.get('password')
         usuario = Client.objects.get(email=request.data.get('email'))
         if usuario.check_password(contraseña_ingresada):
-            return Response({'message': 'Right password'}, status=status.HTTP_200_OK)
+            serializer = self.serializer_class(usuario)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response({'message': 'Wrong password'}, status=status.HTTP_401_UNAUTHORIZED)
 
