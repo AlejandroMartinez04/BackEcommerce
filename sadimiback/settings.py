@@ -89,11 +89,16 @@ WSGI_APPLICATION = 'sadimiback.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sadimi',
+        'USER': 'sadimi_user',
+        'PASSWORD': 'BZ8N0DcmeQiCL9aexTQaYd2ykVoBs1H7',
+        'HOST': 'dpg-chft6brhp8u065rutl6g-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
 }
+
 
 
 # Password validation
