@@ -29,7 +29,7 @@ DEBUG = 'RENDER' not in os.environ
 
 
 
-ALLOWED_HOSTS = ['eback.azurewebsites.net','http://192.168.1.63:3000']
+ALLOWED_HOSTS = ['eback.azurewebsites.net','192.168.1.63:3000']
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 # if RENDER_EXTERNAL_HOSTNAME:
