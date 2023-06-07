@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['eback.azurewebsites.net','192.168.1.63:3000']
+# ALLOWED_HOSTS = ['eback.azurewebsites.net','192.168.1.10:3000']
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 # if RENDER_EXTERNAL_HOSTNAME:
@@ -87,15 +87,23 @@ WSGI_APPLICATION = 'sadimiback.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sadimi',
-        'USER': 'sadimi_user',
-        'PASSWORD': 'BZ8N0DcmeQiCL9aexTQaYd2ykVoBs1H7',
-        'HOST': 'dpg-chft6brhp8u065rutl6g-a.oregon-postgres.render.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600
+    )
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'sadimi',
+#         'USER': 'sadimi_user',
+#         'PASSWORD': 'BZ8N0DcmeQiCL9aexTQaYd2ykVoBs1H7',
+#         'HOST': 'dpg-chft6brhp8u065rutl6g-a.oregon-postgres.render.com',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -155,4 +163,4 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
