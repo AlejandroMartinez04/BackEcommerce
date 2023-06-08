@@ -6,6 +6,7 @@ class People(models.Model):
     contact = models.CharField(max_length=12)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=200)
+    saldo = models.BigIntegerField()
 
     def save(self, *args, **kwargs):
         # Encripta la contraseña antes de guardarla
