@@ -34,7 +34,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=0)
     img = models.CharField(max_length=300)
-    amount = models.IntegerField()
+    amount = models.PositiveSmallIntegerField()
     category = models.CharField(max_length=20)
 
     def __str__(self):

@@ -94,18 +94,6 @@ DATABASES = {
 }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'sadimi',
-#         'USER': 'sadimi_user',
-#         'PASSWORD': 'BZ8N0DcmeQiCL9aexTQaYd2ykVoBs1H7',
-#         'HOST': 'dpg-chft6brhp8u065rutl6g-a.oregon-postgres.render.com',
-#         'PORT': '5432',
-#     }
-# }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
