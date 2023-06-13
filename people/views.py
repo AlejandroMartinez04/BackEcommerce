@@ -1,8 +1,16 @@
-from rest_framework import generics, permissions
-from rest_framework import generics, status
+from rest_framework.views import APIView
+from rest_framework import generics, permissions, status
 from rest_framework.response import Response
+from django.http import JsonResponse
 from .serializers import ClientSerializer, ProductSerializer
 from .models import Client, Product
+
+class APIRootView(APIView):
+    def get(self, request):
+        data = {
+            'message': 'Api working'
+        }
+        return JsonResponse(data)
 
 class ClientViewSet(generics.ListCreateAPIView):
     queryset = Client.objects.all()
