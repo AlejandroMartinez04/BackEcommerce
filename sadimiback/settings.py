@@ -27,6 +27,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 # -----------------------------------------------------
 # COMENTAR PARA DESARROLLO
 # -----------------------------------------------------
@@ -159,5 +161,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
-
-CORS_ALLOW_ALL_ORIGINS = True
