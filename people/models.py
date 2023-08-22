@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.hashers import make_password, check_password
-# from django.contrib.postgres.fields import ArrayField
 import random
 
 
@@ -10,7 +9,6 @@ class People(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=200)
     saldo = models.PositiveSmallIntegerField(default=random.randint(500,3000))
-    # compras = ArrayField(models.CharField(max_length=200), null=True)
 
     def save(self, *args, **kwargs):
         # Encripta la contraseña antes de guardarla
