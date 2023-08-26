@@ -33,7 +33,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 # COMENTAR PARA DESARROLLO
 # -----------------------------------------------------
 
-ALLOWED_HOSTS = ['https://purple-moss-0b5293f10.3.azurestaticapps.net','eback.azurewebsites.net']
+# ALLOWED_HOSTS = ['https://purple-moss-0b5293f10.3.azurestaticapps.net','eback.azurewebsites.net']
+ALLOWED_HOSTS = []
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
